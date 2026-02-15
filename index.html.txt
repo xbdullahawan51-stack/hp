@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Sister</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: white;
+    }
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 1.6em;
+      overflow-y: auto;
+    }
+    .slide h1 {
+      margin-bottom: 20px;
+    }
+    .slide:nth-child(1) { background: linear-gradient(135deg, #ff7eb3, #ff758c); }
+    .slide:nth-child(2) { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+    .slide:nth-child(3) { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .slide:nth-child(4) { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .slide:nth-child(5) { background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
+
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    .controls button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 0 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: white;
+      color: #333;
+      font-weight: bold;
+    }
+    .controls button:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow">
+    <div class="slide" style="display:block;">
+      <h1>🎉 Happy Birthday, Sis! 🎉</h1>
+      <p>Dear sister, today is a day that shines brighter than the rest because it celebrates you 🌟...</p>
+    </div>
+    <div class="slide">
+      <h1>💖 Thank You 💖</h1>
+      <p>Thank you, sis, for being my constant source of strength 🙏...</p>
+    </div>
+    <div class="slide">
+      <h1>🌟 Our Memories 🌟</h1>
+      <p>When I look back at the memories we’ve created together, my heart fills with warmth 🍀...</p>
+    </div>
+    <div class="slide">
+      <h1>🙏 I’m Sorry 🙏</h1>
+      <p>I know I haven’t always been perfect, and sometimes my silly mistakes may have hurt you 😔...</p>
+    </div>
+    <div class="slide">
+      <h1>🎂 Cheers to You 🎂</h1>
+      <p>As you step into another year of your life, I wish you endless happiness, success, and peace 🌈...</p>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSlide()" id="prevBtn">⬅ Previous</button>
+      <button onclick="nextSlide()" id="nextBtn">Next ➡</button>
+    </div>
+  </div>
+
+  <script>
+    let slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(index) {
+      slides[current].style.display = "none";
+      current = (index + slides.length) % slides.length;
+      slides[current].style.display = "block";
+
+      // Hide "Next" button on last slide
+      if (current === slides.length - 1) {
+        document.getElementById("nextBtn").style.display = "none";
+      } else {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      }
+
+      // Hide "Previous" button on first slide
+      if (current === 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline-block";
+      }
+    }
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+    function prevSlide() {
+      showSlide(current - 1);
+    }
+
+    // Initialize first slide correctly
+    showSlide(0);
+  </script>
+</body>
+</html>
